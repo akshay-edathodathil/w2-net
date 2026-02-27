@@ -197,7 +197,9 @@ def main():
     print(f"{'IoU mean':<25} {ious_flow.mean():>8.3f} {ious_identity.mean():>10.3f} {ious_gated.mean():>10.3f}")
     print(f"{'IoU median':<25} {np.median(ious_flow):>8.3f} {np.median(ious_identity):>10.3f} {np.median(ious_gated):>10.3f}")
     print(f"{'IoU > 0.5 (%)':<25} {(ious_flow>0.5).mean()*100:>8.1f} {(ious_identity>0.5).mean()*100:>10.1f} {(ious_gated>0.5).mean()*100:>10.1f}")
-    print(f"{'Flow wins (%)':<25} {(ious_flow > ious_identity).mean()*100:>8.1f}")
+    # print(f"{'Flow wins (%)':<25} {(ious_flow > ious_identity).mean()*100:>8.1f}")
+    flow_wins_pct = float((ious_flow > ious_identity).mean() * 100.0)
+    print(f"{'Flow wins (%)':<25} {flow_wins_pct:>8.1f}")
     import csv
     from datetime import datetime
 
@@ -220,7 +222,8 @@ def main():
         "gated_iou_median": float(np.median(ious_gated)),
         "gated_iou_gt_0p5": float((ious_gated > 0.5).mean()),
 
-        "flow_wins_pct": float(flow_wins_pct),
+        # Ensure flow_wins_pct is defined before use
+        "flow_wins_pct": float(flow_wins_pct),   # <-- NameError
     }
 
     fieldnames = list(row.keys())
