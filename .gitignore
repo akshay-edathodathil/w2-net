@@ -34,3 +34,5 @@ __pycache__/
 # Virtual envs
 .venv/
 venv_ww/
+
+results/*.csv

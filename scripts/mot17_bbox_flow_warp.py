@@ -94,10 +94,23 @@ def main():
     ap.add_argument("--device", default="cpu", help="cpu or mps (Mac) or cuda (GPU)")
     # ap.add_argument("--ckpt", default="gmflow-things-5a18a9e8.ckpt", help="PTLFlow GMFlow checkpoint name")
     ap.add_argument("--ckpt", default="things", help="PTLFlow checkpoint preset: chairs|things|sintel|kitti")
-    ap.add_argument("--out_csv", default="results/flow_warp_metrics.csv",
-                help="CSV to append results to")
+    ap.add_argument("--out_dir", default="results",
+                    help="Directory to save CSV results into")
+    ap.add_argument("--out_csv", default="auto",
+                    help="CSV filename, or 'auto' to use <sequence>.csv")
     args = ap.parse_args()
-    os.makedirs(os.path.dirname(args.out_csv), exist_ok=True)
+
+    os.makedirs(args.out_dir, exist_ok=True)
+
+    if args.out_csv == "auto":
+        seq_name = os.path.basename(os.path.normpath(args.seq))
+        args.out_csv = os.path.join(args.out_dir, seq_name + ".csv")
+    else:
+        # If user passes a filename, save it under out_dir unless they gave a path
+        if os.path.dirname(args.out_csv) == "":
+            args.out_csv = os.path.join(args.out_dir, args.out_csv)
+        else:
+            os.makedirs(os.path.dirname(args.out_csv), exist_ok=True)
     img_dir = os.path.join(args.seq, "img1")
     gt_path = os.path.join(args.seq, "gt", "gt.txt")
 
