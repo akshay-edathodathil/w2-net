@@ -31,3 +31,6 @@ venv/
 __pycache__/
 *.pyc
 .DS_Store
+# Virtual envs
+.venv/
+venv_ww/
