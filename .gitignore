@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+
+# Mac
+.DS_Store
+
+# Data
+data/
+*.mp4
+*.avi
+*.flo
+
+# Models
+*.pt
+*.pth
+*.ckpt
+
+# Logs
+runs/
+logs/
