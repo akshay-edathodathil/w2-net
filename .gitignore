@@ -23,3 +23,11 @@ data/
 # Logs
 runs/
 logs/
+
+# Virtual envs
+.venv/
+venv_ww/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
