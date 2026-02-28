@@ -31,6 +31,9 @@ outputs_cJFlow/
 runs/
 logs/
 
+*.egg-info/
+.eggs/
+
 # Videos / flow artifacts
 *.mp4
 *.avi
