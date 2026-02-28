@@ -1,16 +1,37 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
 *.pyd
+
+# Virtual envs
 .venv/
+.venv_eval/
+venv/
+venv_ww/
 env/
 
 # Mac
 .DS_Store
 
-# Data
-data/
+# Large / generated data (keep folders, ignore contents)
+data/*
+!data/.gitkeep
+!data/README.md
+
+data_mot/*
+!data_mot/.gitkeep
+!data_mot/README.md
+
+results_mot/*
+!results_mot/.gitkeep
+!results_mot/README.md
+
+# Outputs / logs
+outputs_cJFlow/
+runs/
+logs/
+
+# Videos / flow artifacts
 *.mp4
 *.avi
 *.flo
@@ -20,21 +41,11 @@ data/
 *.pth
 *.ckpt
 
-# Logs
-runs/
-logs/
-
-# Virtual envs
-.venv/
-venv_ww/
-venv/
-__pycache__/
-*.pyc
-.DS_Store
-# Virtual envs
-.venv/
-venv_ww/
-
-results/*.csv
-TrackEval/
-output_cJFlow/
+# Evaluation outputs (TrackEval writes here depending on config)
+TrackEval/data/gt/
+TrackEval/data/trackers/
+TrackEval/data/cache/
+TrackEval/data/tmp/
+TrackEval/output/
+TrackEval/results/
+*.csv
